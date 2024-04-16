@@ -288,7 +288,8 @@ disksize(char *disk)
 int
 seekto(int fd, uint64 off)
 {
-#ifdef	__linux__
+// #ifdef	__linux__
+#if 0
 	extern	loff_t llseek(int, loff_t, int);
 
 	if (llseek(fd, (loff_t)off, SEEK_SET) == (loff_t)-1) {

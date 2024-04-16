@@ -19,7 +19,102 @@ done
 trap 'rm -f ${BASE}$$.s ${BASE}$$.c ${BASE}$$.o ${BASE}$$; exit 1' 1 2 15
 
 LDLIBS=-lm
+CFLAGS="${CFLAGS} -I/usr/include/tirpc -static"
+# LDLIBS="-static -static-libgcc -static-libstdc++ -Wl,-Bstatic ${LDLIBS} -ltirpc -lgss -lshishi -ltasn1 -lgssapi -lasn1 -lhcrypto -lidn"
+# LDLIBS="-static -static-libgcc -static-libstdc++ -L/usr/lib/aarch64-linux-gnu/heimdal \
+# 	-Wl,-Bstatic ${LDLIBS} -Wl,--start-group -ltirpc -lgss -lshishi -ltasn1 -lgssapi -lasn1 -lhcrypto -lhdb \
+# 	-lidn -lgcrypt -lheimbase -lheimntlm -lhx509 -lkadm5clnt -lkrb5 -lotp -lroken -lsl -lwind -lsqlite3 -lgpg-error \
+# 	-lgnutls -lgmp -lnettle -lcom_err -lcrypt -lhogweed -Wl,--end-group "
 
+
+LDLIBS="-static -static-libgcc -static-libstdc++ -L/usr/lib/aarch64-linux-gnu/heimdal \
+	-Wl,-Bstatic ${LDLIBS} -Wl,--start-group -ltirpc -lgss -lshishi -ltasn1 -lgssapi -lasn1 -lhcrypto -lhdb \
+	-lidn -lgcrypt -lheimbase -lheimntlm -lhx509 -lkadm5clnt -lkrb5 -lotp -lroken -lsl -lwind -lsqlite3 -lgpg-error \
+	-lgmp -lnettle -lcom_err -lcrypt -lhogweed -Wl,--end-group "
+
+LDLIBS=" ${LDLIBS} \
+-Wl,--start-group \
+-lgmpxx \
+-lgss \
+-lshishi \
+-lgmp \
+-lcom_err \
+-ltasn1 \
+-lgpg-error \
+-lotp \
+-lheimntlm \
+-lkdc \
+-lasn1 \
+-lhcrypto \
+-lroken \
+-lkadm5clnt \
+-lheimbase \
+-lkadm5srv \
+-lsl \
+-lhx509 \
+-lhdb \
+-lgssapi \
+-lkafs \
+-lkrb5 \
+-lwind \
+-lidn \
+-lidn2 \
+-lsqlite3 \
+-lhogweed \
+-lnettle \
+-lgcrypt \
+-ledit \
+-lbsd \
+-lmd \
+-lbsd-ctor \
+-llzma \
+-ldw \
+-lnuma \
+-lfl \
+-lfl \
+-lncurses \
+-ltic \
+-lxml2 \
+-lpanelw \
+-lmenuw \
+-ltinfo \
+-licutu \
+-licudata \
+-lncurses++w \
+-lffi_pic \
+-lncursesw \
+-lpanel \
+-licuuc \
+-licutest \
+-lformw \
+-licui18n \
+-licuio \
+-ltinfo \
+-lmenu \
+-lncurses++ \
+-lffi \
+-lform \
+-lncurses \
+-lbpf \
+-lpsx \
+-ltirpc \
+-lnsl \
+-lelf \
+-ldl \
+-lanl \
+-lutil \
+-lcrypt \
+-lc \
+-lpthread \
+-lc_nonshared \
+-lcap \
+-lresolv \
+-lg \
+-lz \
+-lBrokenLocale \
+-lmcheck \
+-lrt \
+-lm -Wl,--end-group"
 # check for HP-UX's ANSI compiler
 echo "main(int ac, char *av[]) { int i; }" > ${BASE}$$.c
 if ${CC} ${CFLAGS} -o ${BASE}$$ ${BASE}$$.c 1>${NULL} 2>${NULL}
