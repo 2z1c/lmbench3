@@ -28,4 +28,11 @@ jobs:
       run: make -f Makefile.host.mk build_docker
     - name: build binary
       run: make -f Makefile.host.mk build_binary
-
+    - name: pack product
+      run: make -f Makefile.host.mk pack_product
+    - 
+      name: upload 
+      uses: actions/upload-artifact@v3
+      with:
+        name: lmbench3_artifact.zip
+        path: ./lmbench3_*.zip
