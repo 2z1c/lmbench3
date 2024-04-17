@@ -163,9 +163,8 @@ debug:
 assembler:
 	@env CFLAGS=-O MAKE="$(MAKE)" MAKEFLAGS="$(MAKEFLAGS)" CC="${CC}" OS="${OS}" ../scripts/build asm
 
-bk.ver: ../SCCS/s.ChangeSet
+bk.ver: 
 	rm -f bk.ver
-	-echo `bk prs -hr+ -d'$$if(:SYMBOL:){:SYMBOL: }:UTC:' ../ChangeSet;` > bk.ver
 	touch bk.ver
 
 dist: bk.ver

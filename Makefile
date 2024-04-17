@@ -16,6 +16,7 @@
 
 SHELL=/bin/sh
 
+.PHONY: build
 build: 
 	cd src && $(MAKE)
 

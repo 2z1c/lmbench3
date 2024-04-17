@@ -24,6 +24,8 @@ jobs:
     -
       name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
-    - name: build Docker
-      run: make -f Makefile.host.mk
+    - name: build Docker image
+      run: make -f Makefile.host.mk build_docker
+    - name: build binary
+      run: make -f Makefile.host.mk build_binary
 
