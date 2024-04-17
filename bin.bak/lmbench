@@ -10,19 +10,14 @@
 PATH=.:../../scripts:$PATH:/etc:/usr/etc:/sbin:/usr/sbin
 export PATH
 
-if [ -f $1 ]
-then	. $1
-	echo Using config in $1 >> ${OUTPUT}
-else	echo Using defaults >> ${OUTPUT}
-	ENOUGH=1000000
-	TIMING_O=0
-	LOOP_O=0
-	LINE_SIZE=512
-fi
+ENOUGH=1000000
+TIMING_O=0
+LOOP_O=0
+LINE_SIZE=512
 export ENOUGH TIMING_O LOOP_O SYNC_MAX LINE_SIZE LMBENCH_SCHED
 
 if [ X$FILE = X ]
-then	FILE=/tmp/XXX
+then	FILE=/data/XXX
 	touch $FILE || echo Can not create $FILE >> ${OUTPUT}
 fi
 if [ X$MB = X ]
