@@ -18,7 +18,8 @@ SHELL=/bin/sh
 
 .PHONY: build
 build: 
-	cd src && $(MAKE)
+	-cd src && $(MAKE)
+	cp ${CURDIR}/scripts/runlmbench ${CURDIR}/bin/ -v
 
 results: FRC
 	cd src && $(MAKE) results

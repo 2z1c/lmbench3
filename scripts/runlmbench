@@ -4,7 +4,7 @@
 MAXMEMSIZE="128M"
 BLOCKSIZE=512
 
-LMBENCHDIR="/system/bin"
+LMBENCHDIR="/data/wtcl/bin"
 TMPDIR="/data"
 TMP="$TMPDIR/file.tmp"
 func="_func"
