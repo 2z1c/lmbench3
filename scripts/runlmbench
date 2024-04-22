@@ -12,6 +12,7 @@ func="_func"
 if [ "$1" == "-d" ]; then
 	HELPMSG=1
 fi
+export PATH=$PATH:$LMBENCHDIR
 
 TOOLS=(dd sed grep getprop lat_syscall mhz cache lat_sig lat_proc)
 BWTOOLS=(bw_file_rd bw_mem bw_mmap_rd)

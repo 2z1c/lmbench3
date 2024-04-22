@@ -17,10 +17,10 @@ char	*id = "$Id$\n";
 
 
 #ifdef STATIC
-#define	PROG "/tmp/hello-s"
+#define	PROG "/data/wtcl/bin/hello"
 #define STATIC_PREFIX "Static "
 #else
-#define	PROG "/tmp/hello"
+#define	PROG "/data/wtcl/bin/hello"
 #define STATIC_PREFIX ""
 #endif
 
